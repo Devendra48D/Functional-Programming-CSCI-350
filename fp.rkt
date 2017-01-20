@@ -7,6 +7,7 @@
 ;;; appends the result to the end of the rest of the list
 ;;;       - if L is a simple list then appends the first element to the end of the rest of the list until
 ;;;L is reversed
+
 (DEFINE (reverse-general L)
     (COND
         ((NULL? L) L) ;;empty list

@@ -5,5 +5,7 @@
 (DEFINE (reverse-general L)
         (COND
         ((NULL? L) L) ;;empty list
+        ((LIST? L) (APPEND (reverse-general (CDR L)) (LIST (CAR L)))) ;; reverses a simple list
+
     )
 )

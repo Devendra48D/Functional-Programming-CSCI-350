@@ -3,7 +3,4 @@
 ;;;All the sub lists in L are reversed as well. 
 
 (DEFINE (reverse-general L)
-        (COND
-        ((NULL? L) L) ;;empty list
-    )
 )

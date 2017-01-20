@@ -3,8 +3,9 @@
 ;;;All the sub lists in L are reversed as well. 
 
 (DEFINE (reverse-general L)
-        (COND
+    (COND
         ((NULL? L) L) ;;empty list
+        ((LIST? (CAR L)) (APPEND (reverse-general (CDR L)) (LIST (reverse-general (CAR L))))) ;;first element is a list
         ((LIST? L) (APPEND (reverse-general (CDR L)) (LIST (CAR L)))) ;; reverses a simple list
     )
 )

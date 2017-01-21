@@ -15,6 +15,7 @@
         ((LIST? L) (APPEND (reverse-general (CDR L)) (LIST (CAR L)))) ;; reverses a simple list
     )
 )
+<<<<<<< HEAD
 
 ;;;Function sum-up-numbers-simple takes one parameter, a list L which may contain
 ;;;numbers and non-numbers as elements; returns the sum of the numbers not in
@@ -22,3 +23,5 @@
 
 (DEFINE (sum-up-numbers-simple L)
 )
+=======
+>>>>>>> a12cd82dfe462b800e8ad4cd15f435ac499bac7b

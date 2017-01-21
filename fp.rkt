@@ -21,4 +21,7 @@
 ;;;nested lists in L. If there are no such numbers, the result is 0.
 
 (DEFINE (sum-up-numbers-simple L)
+    (COND
+        ((NULL? L) 0) ;;empty list
+    )
 )

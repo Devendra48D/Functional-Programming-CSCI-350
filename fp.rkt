@@ -24,5 +24,6 @@
     (COND
         ((NULL? L) 0) ;;empty list
         ((LIST? (CAR L)) (+ 0 (sum-up-numbers-simple (CDR L)))) ;;first element is a list
+        ((NUMBER? (CAR L)) (+ (CAR L) (sum-up-numbers-simple (CDR L)))) ;;first element is a number
     )
 )

@@ -23,5 +23,6 @@
 (DEFINE (sum-up-numbers-simple L)
     (COND
         ((NULL? L) 0) ;;empty list
+        ((LIST? (CAR L)) (+ 0 (sum-up-numbers-simple (CDR L)))) ;;first element is a list
     )
 )

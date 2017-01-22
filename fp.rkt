@@ -35,3 +35,10 @@
 )
 
 
+;;; Function sum-up-numbers-general takes one parameterl L, a list which may contain
+;;; numbers and non-numbers as elements; returns the sum of all the numbers
+;;; (including those in nested lists) in L. If there are no such numbers, the result is 0.
+
+(DEFINE (sum-up-numbers-general L)
+)
+

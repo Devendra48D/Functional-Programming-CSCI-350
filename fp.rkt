@@ -42,6 +42,7 @@
 (DEFINE (sum-up-numbers-general L)
     (COND
         ((NULL? L) 0);; empty list
+        ((LIST? (CAR L)) (+ (sum-up-numbers-general (CAR L)) (sum-up-numbers-general (CDR L)))) ;;first element is a list
     )
 )
 

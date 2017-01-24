@@ -78,6 +78,42 @@
     )
 )
 
+;;; Function next-big takes two parameters, L a list containing numbers and non-numbers but no nested lists
+;;; and num a number. next-big returns the smallest of the numbers that are larger than num in L.
+;;; If there are no such numbers in L, the result is #F.
+
+;;; Logic: - If num is not a number, the result is #F.
+;;;        - If L is empty, the result i #F.
+;;;        - If there is only one element in L that is smaller than or equal to num, the result is #F
+;;;        - If there is only one element in L that is larger than num, the result is the only number
+;;;        - If there is only one element in L and it is a non number, the result is #F.
+;;;        - If the first element is not a number, the rest of the list is used to find the result
+;;;        - If the first number is larger than num and there is a result from the rest of the list,
+;;;          the minimum of these two is the answer.
+;;;        - If the first number is larger than num and there is no result from the rest of the list,
+;;;          the result is the first number
+;;;        - If the first number is less than or equal to num or the first element is not a number,
+;;;        - the rest of the list is used to find the result
+
+(DEFINE (next-big L num)
+    (COND
+         ((NOT (NUMBER? num)) #F) ;; num is not a number
+         ((NULL? L) #F) ;; L is empty
+         ((AND (NUMBER? (CAR L)) (AND (NULL? (CDR L)) (<= (CAR L) num))) #F) ;; only one element in L
+         ;; the element is a number that is smaller than or equal to num
+         ((AND (NUMBER? (CAR L)) (AND (NULL? (CDR L)) (> (CAR L) num))) (CAR L)) ;; only one element in L
+         ;; the element is a number that is larger than num
+         ((AND (NOT (NUMBER? (CAR L))) (NULL? (CDR L))) #F) ;; only element in L and it is not a number
+         ((AND (NOT (NUMBER? (CAR L))) (NOT (NULL? (CDR L)))) (next-big (CDR L) num)) ;; first element is not a
+         ;; number and there are more elements in the list
+         ((AND (> (CAR L) num) (NUMBER? (next-big (CDR L) num))) (MIN (CAR L) (next-big (CDR L) num)))
+         ;; first number is larger than num and there is a result from the rest of the list
+         ((AND (> (CAR L) num) (NOT (NUMBER? (next-big (CDR L) num)))) (CAR L))
+         ;; first number is larger than num and there is no result from the rest of the list
+         ((OR (<= (CAR L) num) (NOT (NUMBER? (CAR L)))) (next-big (CDR L) num))
+         ;; first number is less than or equal to num or first element is not a number
+    )
+)
 
 ;;; Function min-above-min takes two parameters, L1 and L2 that are both lists which do not contain nested lists
 ;;; Both L1 and L2 may have non-numeric elements; returns the minimum of the numbers in L1 that are larger than

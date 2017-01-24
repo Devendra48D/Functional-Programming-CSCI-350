@@ -53,6 +53,31 @@
     )
 )
 
+;;; Function min-list takes one parameter L, a list of numbers and non-numbers without any nested lists
+;;; and returns the smallest number in L. If no such number is present, returns #F.
+
+;;; Logic: - Answer is #F if list is empty
+;;;        - If the list has only one number, the nuumber is the answer
+;;;        - If the list has only one non-number and no numbers; the answer is #F
+;;;        - If the first element is not a number, the answer is minimum from the rest of the list
+;;;        - If the first element is a number and the minimum for the rest of the list is not a number,
+;;;          the answer is the first number
+;;;        - If the first element is a number and the minimum for the rest is also a number,
+;;;          the answer is minimum of these two values.
+
+(DEFINE (min-list L)
+    (COND
+        ((NULL? L) #F) ;; empty list
+        ((AND (NUMBER? (CAR L)) (NULL? (CDR L))) (CAR L)) ;; list with only one number
+        ((AND (NOT (NUMBER? (CAR L))) (NULL? (CDR L))) #F) ;; list with only one non-number
+        ((NOT (NUMBER? (CAR L))) (min-list (CDR L))) ;; first element is not a number
+        ((AND (NUMBER? (CAR L)) (NOT (NUMBER? (min-list (CDR L))))) (CAR L)) ;; first element is a number
+        ;; and min of rest of the list is not a number
+        ((AND (NUMBER? (CAR L)) (NUMBER? (min-list (CDR L)))) (MIN (CAR L) (min-list (CDR L))))
+        ;; first element is a number and min of rest of the list also a number
+    )
+)
+
 
 ;;; Function min-above-min takes two parameters, L1 and L2 that are both lists which do not contain nested lists
 ;;; Both L1 and L2 may have non-numeric elements; returns the minimum of the numbers in L1 that are larger than

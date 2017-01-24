@@ -53,3 +53,12 @@
     )
 )
 
+
+;;; Function min-above-min takes two parameters, L1 and L2 that are both lists which do not contain nested lists
+;;; Both L1 and L2 may have non-numeric elements; returns the minimum of the numbers in L1 that are larger than
+;;; the smallest number in L2.
+;;; If there is no number in L2, the function returns the minimum of numbers in L1.
+;;; If there is no number in L1 that is larger than the minimum of L1, the result is #F.
+
+(DEFINE (min-above-min L1 L2)
+)

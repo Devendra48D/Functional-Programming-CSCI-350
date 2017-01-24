@@ -121,9 +121,16 @@
 ;;; If there is no number in L2, the function returns the minimum of numbers in L1.
 ;;; If there is no number in L1 that is larger than the minimum of L1, the result is #F.
 
+;;; Logic: - If L1 is empty, the result is #F.
+;;;        - If L1 does not have a number, the result is #F.
+;;;        - If L2 is empty, the result is minimum of L1.
+;;;        - If L2 has a minimum number, the result is (next-big L1 (min-list L2)) 
+
 (DEFINE (min-above-min L1 L2)
     (COND
         ((NULL? L1) #F) ;; L1 is empty
         ((NOT (NUMBER? (min-list L1))) #F) ;; L1 does not have a number
+        ((NULL? L2) (min-list L1)) ;; L2 is empty
+        ((NUMBER? (min-list L2)) (next-big L1 (min-list L2))) ;; L2 has a minimum number
     )
 )

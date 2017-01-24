@@ -61,4 +61,8 @@
 ;;; If there is no number in L1 that is larger than the minimum of L1, the result is #F.
 
 (DEFINE (min-above-min L1 L2)
+    (COND
+        ((NULL? L1) #F) ;; L1 is empty
+        ((NOT (NUMBER? (min-list L1))) #F) ;; L1 does not have a number
+    )
 )
